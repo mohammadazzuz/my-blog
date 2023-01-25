@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class Post(models.Model):
@@ -14,9 +15,9 @@ class Post(models.Model):
         choices=Gender.choices,
         default=Gender.MAN
     )
-    image = models.ImageField(upload_to='posts/')
+    image = models.ImageField(upload_to='posts/',default='default.png')
 
-
+    tags = TaggableManager()
 
 
 
