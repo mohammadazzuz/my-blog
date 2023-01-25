@@ -6,7 +6,7 @@ class Post(models.Model):
     content = models.TextField(max_length=200)
     class Gender(models.Choices):
         MAN =  "MAN"
-        WOM =  "WOMAN"
+        WOMAN =  "WOMAN"
         # (...)
 
     gender = models.CharField(
@@ -14,3 +14,12 @@ class Post(models.Model):
         choices=Gender.choices,
         default=Gender.MAN
     )
+    image = models.ImageField(upload_to='posts/')
+
+
+
+
+
+
+    def __str__(self):
+        return self.title
