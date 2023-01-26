@@ -10,12 +10,8 @@ class Post(models.Model):
         MAN =  "MAN"
         WOMAN =  "WOMAN"
         # (...)
+    gender = models.CharField(max_length=999999999999999,choices=Gender.choices,default=Gender.MAN)
 
-    gender = models.CharField(
-        max_length=999999999999999,
-        choices=Gender.choices,
-        default=Gender.MAN
-    )
     image = models.ImageField(upload_to='posts/',default='default.png')
     author = models.ForeignKey(User,related_name='post_author',on_delete=models.CASCADE)
 

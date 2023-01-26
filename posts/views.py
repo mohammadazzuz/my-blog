@@ -14,5 +14,14 @@ def post_detail(request,id):
 
 
 def create_post(request):
-    form = PostForm()
+    if request.method == 'POST':
+        print('in post ...')
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.author = request.user
+            myform.save()
+    else:
+        print(' in get ...')
+        form = PostForm()
     return render(request,'create.html',{'form':form})
